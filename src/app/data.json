@@ -6,17 +6,27 @@
   },
   {
     "id": 2,
-    "texto": "10 minutes meditation",
+    "texto": "asdfasdfsadfasdf",
+    "bol": false
+  },
+  {
+    "id": 3,
+    "texto": "asdfasdfasdf",
     "bol": false
   },
   {
     "id": 4,
-    "texto": "Esta es mi lista de tareas!!!",
+    "texto": "asdfasdfsadf",
     "bol": false
   },
   {
     "id": 5,
-    "texto": "dfgdfgdsfgdsfgdsfg",
+    "texto": "asdfasdfsadfsadf",
+    "bol": false
+  },
+  {
+    "id": 7,
+    "texto": "asdfsadfsadfsa",
     "bol": false
   }
 ]

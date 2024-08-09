@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: 'selector',
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -8,7 +9,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        veryLightGray: " hsl(0, 0%, 98%)",
+        veryLightGray: "hsl(0, 0%, 98%)",
         veryLightGrayishBlue: "hsl(236, 33%, 92%)",
         lightGrayishBlue: "hsl(233, 11%, 84%)",
         darkGrayishBlue: "hsl(236, 9%, 61%)",
