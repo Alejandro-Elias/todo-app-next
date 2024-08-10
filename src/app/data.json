@@ -1,32 +1,32 @@
 [
   {
     "id": 1,
-    "texto": "Jog around the park 3x",
+    "texto": "Complete online JavaScript course",
     "bol": false
   },
   {
     "id": 2,
-    "texto": "asdfasdfsadfasdf",
+    "texto": "Jog Around the pasrk 3x",
     "bol": false
   },
   {
     "id": 3,
-    "texto": "asdfasdfasdf",
+    "texto": "10 minutes meditation",
     "bol": false
   },
   {
     "id": 4,
-    "texto": "asdfasdfsadf",
+    "texto": "Read for 1 hour",
     "bol": false
   },
   {
     "id": 5,
-    "texto": "asdfasdfsadfsadf",
+    "texto": "Pick uo groseries",
     "bol": false
   },
   {
-    "id": 7,
-    "texto": "asdfsadfsadfsa",
+    "id": 6,
+    "texto": "Complete Todo App on Fronted Mentor",
     "bol": false
   }
 ]

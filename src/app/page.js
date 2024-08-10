@@ -9,6 +9,18 @@ export default function Home() {
   const [filter, setFilter] = useState('all');
   const [todo, setTodo] = useState([]);
   const [left, setLeft] = useState([]);
+  const [control, setControl] = useState(true)
+  const [dark, setDark] = useState("")
+
+  const changeMode = () => {
+    if (control) {
+      setDark("dark")
+      setControl(false)      
+    } else {
+      setDark("")
+      setControl(true)
+    }
+  }
 
   useEffect(() => {
     setTodo(data)
@@ -142,17 +154,17 @@ export default function Home() {
 
   return (
     <>
-      <main className='bg-veryLightGrayishBlue flex flex-col min-h-screen dark'>
-        <div className='bg-[url("/bg-mobile-light.jpg")] dark:bg-[url("/bg-mobile-dark.jpg")] bg-no-repeat bg-cover h-[200px] px-5 flex flex-col justify-evenly py-3'>
-          <div className=' flex justify-between items-center ml-1'>
-            <h1 className='text-white text-[26px] font-bold uppercase tracking-[10px]'>Todo</h1>
-            <img className='w-5 h-5' src="/icon-moon.svg" alt="" />
+      <main className={`bg-veryLightGrayishBlue flex flex-col min-h-screen ${dark} dark:bg-veryDarkBlue`}>
+        <div className='bg-[url("/bg-mobile-light.jpg")] dark:bg-[url("/bg-mobile-dark.jpg")] xl:bg-[url("/bg-desktop-light.jpg")] xl:dark:bg-[url("/bg-desktop-dark.jpg")] bg-no-repeat bg-cover h-[200px] px-5 flex flex-col justify-evenly py-3 md:px-[31%] md:h-[260px] md:pt-0'>
+          <div className=' flex justify-between items-baseline ml-1 sm:mt-2'>
+            <h1 className='text-white text-[26px] font-bold uppercase tracking-[10px] md:text-[34px] md:-mb-10'>Todo</h1>
+            <img onClick={changeMode} className='w-5 h-5' src= {control ? "/icon-moon.svg" : "/icon-sun.svg" }alt="" />
           </div>
-          <div className='w-full bg-white h-12 rounded-lg flex gap-4 items-center dark:bg-veryDarkBlue'>
-            <div onClick={handleClick} className={`h-6 w-6 border-2 rounded-full ml-5 flex justify-center items-center ${isActive ? 'bg-gradient-to-br from-cyan-300 to-purple-600' : ''}`}>
-              <img className='dark:text-veryDarkBlue' src="/icon-check.svg" alt="icon check" />
+          <div className='w-full bg-white h-12 rounded-sm flex gap-4 items-center dark:bg-veryDarkDesaturatedBlue md:h-[58px] '>
+            <div onClick={handleClick} className={`h-6 w-6 border-[1px] rounded-full ml-5 border-lightGrayishBlueDarkHover dark:border-veryDarkGrayishBlue hover:border-darkGrayishBlue dark:hover:border-lightGrayishBlueDarkHover flex justify-center items-center ${isActive ? 'bg-gradient-to-br from-cyan-300 to-purple-600' : ''}`}>
+              <img className='fill-black' src= {isActive ? "/icon-check.svg" : null }  alt= {isActive ? "icon check" : null } />
             </div>
-            <input value={inputValue} onKeyDown={handleKeyDown} onChange={handleChange} className='border-0 active:border-0 focus:border-0 outline-none placeholder:text-[12px] dark:bg-veryDarkBlue' type="text" placeholder='Create a new ToDo...' />
+            <input value={inputValue} onKeyDown={handleKeyDown} onChange={handleChange} className='border-0 active:border-0 focus:border-0 outline-none placeholder:text-[16px] dark:bg-veryDarkDesaturatedBlue sm:text-[16px] dark:sm:text-lightGrayishBlueDark' type="text" placeholder='Create a new ToDo...' />
             <p className='text-xs text-darkGrayishBlue' ></p>
 
           </div>
@@ -163,35 +175,35 @@ export default function Home() {
 
           <div>
 
-            <div className='px-11 -m-6'>
+            <div className='px-5 -mt-6 md:px-[31%] md:-mt-12 '>
               {filteredTodos.map((task) => (
-                <div key={task.id} className='w-full first-of-type:rounded-t-md bg-white h-12 flex gap-4 items-center border'>
-                  <div onClick={() => handleCheck(task.id)} className={`h-6 w-6 border-2 rounded-full ml-5 flex justify-center items-center ${task.bol ? 'bg-gradient-to-br from-cyan-300 to-purple-600' : ''}`}>
-                    <img src="/icon-check.svg" alt="icon check" />
+                <div key={task.id} className='w-full first-of-type:rounded-t-sm bg-white min-h-12 flex gap-4 items-center border dark:bg-veryDarkDesaturatedBlue dark:text-lightGrayishBlueDark border-t-0 border-x-0 dark:border-b-1 dark:border-darkGrayishBlueDark md:h-[58px] '>
+                  <div onClick={() => handleCheck(task.id)} className={`h-6 w-full max-w-6 border-[1px] rounded-full ml-5 flex justify-center items-center border-lightGrayishBlueDarkHover dark:border-veryDarkGrayishBlue hover:border-darkGrayishBlue dark:hover:border-lightGrayishBlueDarkHover ${task.bol ? 'bg-gradient-to-br from-cyan-300 to-purple-600' : ''}`}>
+                    <img src={task.bol ? "/icon-check.svg": null } alt={task.bol ? "icon check" : null} />
                   </div>
-                  <p className={` text-xs truncate w-56 text-wrap  ${task.bol ? 'text-darkGrayishBlue line-through' : 'text-veryDarkGrayishBlue'} `}> {task.texto} </p>
-                  <button onClick={() => deleteOne(task.id)} ><img className='w-3 h-3' src='/icon-cross.svg' alt='icon cross' /></button>
+                  <p className={`text-xs truncate w-[2000px] text-wrap  ${task.bol ? 'text-darkGrayishBlue line-through dark:fill-veryLightGrayishBlue' : 'text-veryDarkGrayishBlue dark:text-lightGrayishBlueDark'} sm:text-[16px]`}> {task.texto} </p>
+                  <button onClick={() => deleteOne(task.id)} className='w-full flex justify-end mr-5' ><svg className='scale-75 dark:fill-darkGrayishBlue' xmlns="http://www.w3.org/2000/svg" width="18" height="18"><path  fill-rule="evenodd" d="M16.97 0l.708.707L9.546 8.84l8.132 8.132-.707.707-8.132-8.132-8.132 8.132L0 16.97l8.132-8.132L0 .707.707 0 8.84 8.132 16.971 0z"/></svg></button>
                 </div>
               ))}
-              <div className='w-full rounded-b-md bg-white h-12 flex items-center border justify-between px-6'>
-                <p className='text-xs text-darkGrayishBlue' > {left.length} items left </p>
-                <button onClick={deleteCompleted}><p className='text-xs text-darkGrayishBlue' >Clear Completed</p></button>
+              <div className='w-full rounded-b-sm bg-white h-12 flex items-center border justify-between px-6 dark:bg-veryDarkDesaturatedBlue dark:border-0'>
+                <p className='text-xs text-darkGrayishBlue hover:text-veryDarkBlue dark:hover:text-lightGrayishBlueDarkHover' > {left.length} items left </p>
+                <button onClick={deleteCompleted}><p className='text-xs text-darkGrayishBlue hover:text-veryDarkBlue dark:hover:text-lightGrayishBlueDarkHover' >Clear Completed</p></button>
               </div>
             </div>
 
-            <div className='p-5' >
-              <div className='w-full rounded-b-md bg-white h-12 flex items-center border justify-between px-6'>
-                <ul className='w-full flex justify-between px-16 text-darkGrayishBlue font-bold text-sm'>
-                  <button onClick={() => handleFilterChange('all')}><li className=' hover:text-sky-700'>All</li></button>
-                  <button onClick={() => handleFilterChange('active')}><li className=' hover:text-sky-700'>Active</li></button>
-                  <button onClick={() => handleFilterChange('completed')}><li className=' hover:text-sky-700'>Completed</li></button>
+            <div className='p-5 mt-5 md:px-[31%]' >
+              <div className='w-full rounded-md bg-white h-12 flex items-center border justify-between px-6 dark:bg-veryDarkDesaturatedBlue dark:border-0 xl:bg-transparent xl:justify-center xl:dark:bg-transparent'>
+                <ul className='w-full flex justify-between px-16 text-darkGrayishBlue font-bold text-sm md:px-1 xl:relative xl:justify-center xl:mb-50 xl:gap-4 xl:inline-flex text-center bottom-[88px] xl:w-[50%] '>
+                  <button onClick={() => handleFilterChange('all')}><li className=' hover:text-veryDarkBlue dark:hover:text-lightGrayishBlueDarkHover'>All</li></button>
+                  <button onClick={() => handleFilterChange('active')}><li className=' hover:text-veryDarkBlue dark:hover:text-lightGrayishBlueDarkHover'>Active</li></button>
+                  <button onClick={() => handleFilterChange('completed')}><li className=' hover:text-veryDarkBlue dark:hover:text-lightGrayishBlueDarkHover'>Completed</li></button>
                 </ul>
               </div>
             </div>
           </div>
 
 
-          <div className=' flex items-end justify-center' >
+          <div className=' flex items-end justify-center mb-2 md:px-[31%] ' >
             <p className='text-darkGrayishBlue'>Drag and drop to reorder list</p>
           </div>
         </div>
@@ -199,10 +211,10 @@ export default function Home() {
 
       </main>
 
-      <footer className='bg-veryLightGrayishBlue p-5'>
-        <div className="attribution text-xs">
+      <footer className={`bg-veryLightGrayishBlue p-5 dark:bg-veryDarkBlue ${dark} dark:text-veryDarkGrayishBlueDark md:text-center`}>
+        <div className="attribution text-xs dark:border-0">
           Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
-          Coded by <a href="#">Your Name Here</a>.
+          Coded by <a href="https://www.linkedin.com/in/alejandro-elias-full-stack/">Your Name Here</a>.
         </div>
       </footer>
     </>
