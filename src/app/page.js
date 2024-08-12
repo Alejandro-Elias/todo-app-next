@@ -192,8 +192,8 @@ export default function Home() {
             </div>
 
             <div className='p-5 mt-5 md:px-[31%]' >
-              <div className='w-full rounded-md bg-white h-12 flex items-center border justify-between px-6 dark:bg-veryDarkDesaturatedBlue dark:border-0 xl:bg-transparent xl:justify-center xl:dark:bg-transparent'>
-                <ul className='w-full flex justify-between px-16 text-darkGrayishBlue font-bold text-sm md:px-1 xl:relative xl:justify-center xl:mb-50 xl:gap-4 xl:inline-flex text-center bottom-[88px] xl:w-[50%] '>
+              <div className='w-full rounded-md bg-white h-12 flex items-center border justify-between px-2 dark:bg-veryDarkDesaturatedBlue dark:border-0 xl:bg-transparent xl:justify-center xl:dark:bg-transparent'>
+                <ul className='w-full flex justify-between px-12 gap-2 text-darkGrayishBlue font-bold text-sm md:px-1 xl:relative xl:justify-center xl:mb-50 xl:gap-4 xl:inline-flex text-center bottom-[88px] xl:w-[50%] '>
                   <button onClick={() => handleFilterChange('all')}><li className=' hover:text-veryDarkBlue dark:hover:text-lightGrayishBlueDarkHover'>All</li></button>
                   <button onClick={() => handleFilterChange('active')}><li className=' hover:text-veryDarkBlue dark:hover:text-lightGrayishBlueDarkHover'>Active</li></button>
                   <button onClick={() => handleFilterChange('completed')}><li className=' hover:text-veryDarkBlue dark:hover:text-lightGrayishBlueDarkHover'>Completed</li></button>
